@@ -15,7 +15,7 @@ public class RequestParser {
             throw new RequestSyntaxException("Invalid request body");
         }
 
-        if(!isValidData(payload)) {
+        if(!isValidData(payload.getJSONObject("data"))) {
             throw new RequestSyntaxException("Invalid request body");
         }
 
@@ -26,16 +26,13 @@ public class RequestParser {
         return data;
     }
 
-    public boolean isValidData(JSONObject payload) {
-        boolean hasRmsVoltage = payload.has("rms_voltage");
-        boolean hasRmsCurrent = payload.has("rms_current");
-        boolean hasRealPower = payload.has("real_power");
-        boolean hasApparentPower = payload.has("apparent_power");
-        boolean hasPowerFactor = payload.has("power_factor");
+    public boolean isValidData(JSONObject data) {
+        boolean hasRmsVoltage = data.has("rms_voltage");
+        boolean hasRmsCurrent = data.has("rms_current");
+        boolean hasRealPower = data.has("real_power");
+        boolean hasApparentPower = data.has("apparent_power");
+        boolean hasPowerFactor = data.has("power_factor");
 
-        if (hasApparentPower && hasPowerFactor && hasRealPower && hasRmsVoltage && hasRmsCurrent) {
-            return true;
-        }
-        return false;
+        return hasApparentPower && hasPowerFactor && hasRealPower && hasRmsVoltage && hasRmsCurrent;
     }
 }

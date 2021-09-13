@@ -1,12 +1,10 @@
 package com.fyp.energymon.request;
 
 import com.fyp.energymon.dto.PowerDTO;
-import com.fyp.energymon.util.FormValidator;
 import org.json.JSONObject;
 
 public class PowerRequest {
     private JSONObject data;
-    private FormValidator formValidator;
 
     private double rmsVoltage;
     private double rmsCurrent;
@@ -14,9 +12,8 @@ public class PowerRequest {
     private double apparentPower;
     private double powerFactor;
 
-    public PowerRequest(JSONObject data, FormValidator formValidator) {
+    public PowerRequest(JSONObject data) {
         this.data = data;
-        this.formValidator = formValidator;
     }
 
     public PowerDTO validateRequest() {
