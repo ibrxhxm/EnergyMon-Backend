@@ -1,11 +1,22 @@
 package com.fyp.energymon.model;
 
+import java.time.LocalDateTime;
+
 public class Power {
+    private LocalDateTime timestamp;
     private double rmsCurrent;
     private double rmsVoltage;
     private double powerFactor;
     private double apparentPower;
     private double realPower;
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
 
     public double getRmsCurrent() {
         return rmsCurrent;
